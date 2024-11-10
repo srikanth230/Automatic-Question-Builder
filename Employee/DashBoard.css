@@ -1,0 +1,274 @@
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+    background-color: #d4d7db;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.top-nav {
+    background-color: #2C3E50;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left h2 {
+    margin-left: 10px;
+    font-size: 24px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.notification-btn, .back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+
+.container {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2C3E50;
+    padding: 20px;
+    height: 900px;
+    transition: width 0.3s ease;
+}
+
+
+
+
+.sidebar-header {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li i {
+    width: 40px;
+    
+}
+
+.sidebar ul li :hover {   
+    background-color: #d4d7db; 
+    color: #2C3E50; 
+    border-radius: 5px;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.menu-text {
+    
+    margin-left: 10px;
+}
+
+.sidebar.expanded .menu-text {
+    display: inline-block;
+    
+}
+
+
+.centered-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 60px; 
+}
+
+
+.typewriter h1 {
+    font-family: 'Papyrus', fantasy;
+    font-size: 36px;
+    color: rgb(14, 15, 21);
+    padding-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #d4d7db;
+}
+
+.dashboard-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background-color: #fdf8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+   
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.popup-container {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #2C3E50;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.popup-container.show {
+    display: block;
+}
+
+#email-id {
+    margin-bottom: 10px;
+}
+
+.popup-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.popup-menu li {
+    margin: 10px 0;
+}
+
+.popup-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.popup-menu li a:hover {
+    background-color: white;
+    color: #2C3E50;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+.helpdesk {
+    background-color:#2C3E50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+.helpdesk h3 {
+    margin-bottom: 10px;
+}
+
+.helpdesk p {
+    margin: 5px 0;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #ffcc00;
+}
+    
+
+
+.performance-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.performance-table th, .performance-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.performance-container canvas {
+    max-width: 80%;
+    margin: 0 auto;
+}
+@keyframes blink {
+    from { border-right-color: black; }
+    to { border-right-color: transparent; }
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .dashboard-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+
+ 
+

@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBUILD | Employee </title>
+    <link rel="icon" href="../Images/qn.png" type="image/png">
+    <link rel="stylesheet" href="./DashBoard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/63ba89df2f.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    
+    <nav class="top-nav">
+        <div class="nav-left">
+           <button class="back-btn" onclick="history.back()">⬅️
+            
+        </div>
+        <div class="nav-right">
+            <button class="notification-btn">🔔</button>
+            <i class="fa-solid fa-user" id="user-icon" style="font-size: 20px; margin-left: 20px; cursor: pointer;"></i>
+        </div>
+    </nav>
+
+    <div class="popup-container" id="popup-container">
+        <p id="email-id">trainer@example.com</p>
+        <ul class="popup-menu">
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+
+    
+    <div class="container">
+       
+        <nav class="sidebar">
+            
+            <ul class="sidebar-menu">
+                <li><a href="ReqQn.html" class="link-card"><i class="fa-solid fa-file-circle-question"></i><span class="menu-text">Request Question Bank</span></a></li>
+                <li><a href="SelfAsses.html" class="link-card"><i class="fa-solid fa-chalkboard-user"></i><span class="menu-text">Self-Assessment</span></a></li>
+                <li><a href="Feedbackemp.html" class="link-card"><i class="fa-solid fa-comments"></i><span class="menu-text">Submit Feedback</span></a></li>
+                <li><a href="Learningdev.html" class="link-card"><i class="fa-solid fa-graduation-cap"></i><span class="menu-text">Learning and Development</span></a></li>
+                <li><a href="Reqlearningplan.html" class="link-card"><i class="fa-regular fa-hand"></i><span class="menu-text">Request Learning Plan</span></a></li>
+                <li><a href="Logout.html"icon"><i class="fa-solid fa-right-from-bracket"></i><span class="menu-text">Logout</span></a></li>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <header class="centered-content">
+                <div class="typewriter">
+                    <h1 id="typewriter-text"></h1>
+                </div>
+            </header>
+
+        <div class="dashboard-metrics">
+                <div class="card">
+                    <h3>New Notifications</h3>
+                    <p>Your self-assessment is due next week.</p>
+                </div>
+                <div class="card">
+                    <h3>New Notifications</h3>
+                    <p>New learning modules available.</p>
+                </div>
+                <div class="card">
+                    <h3>New Notifications</h3>
+                    <p>Your feedback has been received.</p>
+                </div>
+            </div>
+
+            
+            <div class="performance-container">
+                <h2 style="padding-top: 50px; padding-bottom: 20px;">Past Performance</h2>
+                <table class="performance-table">
+                    <thead>
+                        <tr>
+                            <th>Test Name</th>
+                            <th>Score</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Module 1</td>
+                            <td>85</td>
+                            <td>85%</td>
+                        </tr>
+                        <tr>
+                            <td>Module 2</td>
+                            <td>90</td>
+                            <td>90%</td>
+                        </tr>
+                        <tr>
+                            <td>Module 3</td>
+                            <td>78</td>
+                            <td>78%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+  
+    
+    <footer class="helpdesk">
+        <h3>Helpdesk & Contact Information</h3>
+        <p>Email: support@company.com</p>
+        <p>Phone: +1 800 123 456</p>
+        <div class="social-icons">
+            
+            <div class="social-icons">
+               <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook" style="font-size: 20px;"></i></a>
+               <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter" style="font-size: 20px;"></i></a>
+               <a href="https://www.linkedin.com" target="_blank"><i class="fa-brands fa-linkedin" style="font-size: 20px;"></i></a>
+               <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram" style="font-size: 20px;"></i></a>
+            </div>
+         </div>
+    </footer>
+
+    <script>
+        
+        
+
+        
+        const text = "Welcome Employee..!!"; 
+        const typewriterText = document.getElementById('typewriter-text');
+        let index = 0;
+
+        function typeEffect() {
+            if (index < text.length) {
+                typewriterText.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, 100);
+            } else {
+                setTimeout(() => {
+                    typewriterText.innerHTML = "";
+                    index = 0;
+                    typeEffect();
+                }, 1000); 
+            }
+        }
+        typeEffect();
+
+        const userIcon = document.getElementById('user-icon');
+         const popupContainer = document.getElementById('popup-container');
+ 
+         userIcon.addEventListener('click', () => {
+             popupContainer.classList.toggle('show');
+         });
+ 
+         window.addEventListener('click', (event) => {
+             if (!popupContainer.contains(event.target) && event.target !== userIcon) {
+                 popupContainer.classList.remove('show');
+             }
+         });
+          // Line Chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Module 1', 'Module 2', 'Module 3'],
+                datasets: [{
+                    label: 'Performance (%)',
+                    data: [85, 90, 78],
+                    borderColor: '#2C3E50',
+                    backgroundColor: 'rgba(44, 62, 80, 0.2)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>  
+

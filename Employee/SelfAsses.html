@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBUILD | Employee</title>
+    <link rel="icon" href="../Images/qn.png" type="image/png">
+    <link rel="stylesheet" href="SelfAsses.css">
+    <script src="https://kit.fontawesome.com/63ba89df2f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+           <button class="back-btn" onclick="history.back()">⬅️
+            
+        </div>
+        <div class="nav-right">
+            <button class="notification-btn">🔔</button>
+            <i class="fa-solid fa-user" id="user-icon" style="font-size: 20px; margin-left: 20px; cursor: pointer;"></i>
+        </div>
+    </nav>
+
+    <div class="popup-container" id="popup-container">
+        <p id="email-id">trainer@example.com</p>
+        <ul class="popup-menu">
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+
+<div class="container">
+    <h1>Self-Assessment</h1>
+
+    <div class="question-banks">
+        <h2>Requested Question Banks</h2>
+        <ul>
+            <li>
+                <span>Artificial Intelligence</span>
+                <span class="status">Completed</span>
+                <a href="#" class="download-btn">Download</a>
+            </li>
+            <li>
+                <span>Machine Learning</span>
+                <span class="status">  In Progress</span>
+                <a href="#" class="download-btn">Download</a>
+            </li>
+            <li>
+                <span>Data Science</span>
+                <span class="status">  Not Started</span>
+                <a href="#" class="download-btn">Download</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+<script>
+    const userIcon = document.getElementById('user-icon');
+         const popupContainer = document.getElementById('popup-container');
+ 
+         userIcon.addEventListener('click', () => {
+             popupContainer.classList.toggle('show');
+         });
+ 
+         window.addEventListener('click', (event) => {
+             if (!popupContainer.contains(event.target) && event.target !== userIcon) {
+                 popupContainer.classList.remove('show');
+             }
+         });
+</script>
+</html>

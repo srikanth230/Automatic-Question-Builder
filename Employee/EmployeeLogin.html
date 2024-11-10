@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBUILD | Login Page</title>
+    <link rel="icon" href="../Images/qn.png" type="image/png">
+    <link rel="stylesheet" href="EmployeeLogin.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js"></script>
+    <script type="module" src="EmployeeLogin.js"></script> <!-- Link to your JS file -->
+    
+</head>
+<body>
+    <img id="Logo" src="../Images/qbuildbg.png" alt="qbuild">
+    <div class="container">
+        <div class="login-box">
+            <div class="left-section">
+                <h2>Email</h2>
+                <input type="text" id="email" placeholder="username or email" required>
+                <h2>Password</h2>
+                <input type="password" id="password" placeholder="password" required>
+                <div class="remember-forgot">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <a href="./DashBoard.html"><button id="submit" class="btn">LOGIN</button></a>
+               
+            </div>
+            <div class="right-section">
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
