@@ -1,13 +1,5 @@
 # Automated Question Builder
 
-## Team Name: Captain's Crew  
-**Team Members:**  
-- Srikanth  V 
-- Hariharan  G K 
-- Afzal Hameeth N  
-- Nandha Gopal T
-- Sharan P  
-
 ## Overview
 
 The **Automated Question Builder** is an AI-powered web application designed to streamline the creation and management of quizzes and assessments. Targeted at educators, trainers, and content developers, this application allows for quick and customized question generation, enhancing the learning experience by saving time and enabling versatile question types for various educational contexts.
@@ -73,6 +65,16 @@ We welcome contributions! To contribute:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Acknowledgments
+
+- Thanks to all the contributors of the open-source libraries and frameworks used in this project.
+- Special thanks to the educators and researchers who inspired this idea.
+
+
+## Team Project: Automated Question Builder
+
+The **Automated Question Builder** is the project developed by the **Captain's Crew** team. It is an AI-powered web application designed to simplify and automate the process of creating quizzes and assessments for educators and content developers.
+
 ## Contact Us
 
 1. [V Srikanth - LinkedIn](https://www.linkedin.com/in/srikanthv3047/) --- srikanth047v@gmail.com
@@ -80,9 +82,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 3. [N Afzal Hameeth - LinkedIn](https://www.linkedin.com/in/afsal-hameeth-01a099281/) --- afsalhameeth271103@gmail.com
 4. [T Nandha Gopal - LinkedIn](https://www.linkedin.com/in/nandhagopal-t-97729b257/) --- nandhathanikai@gmail.com
 5. [Sharan Parthasarathy - LinkedIn](https://www.linkedin.com/in/sharan-parthasarathy-27928124b/) --- [Email not provided]
-
-
-## Acknowledgments
-
-- Thanks to all the contributors of the open-source libraries and frameworks used in this project.
-- Special thanks to the educators and researchers who inspired this idea.
