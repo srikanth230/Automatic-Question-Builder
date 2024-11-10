@@ -1,0 +1,139 @@
+/* Basic Styles */
+body, html {
+    background: url('../Qbuild Phase2/Images/bg.jpg') no-repeat center center fixed;
+    margin: 0;
+    padding: 0;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    overflow: hidden;
+  }
+  
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    transition: filter 0.5s ease;
+  }
+  
+  .main-container {
+    text-align: center;
+  }
+  
+  /* Typing Text */
+  .welcome-text h1 {
+    font-family: 'Papyrus', sans-serif;
+    font-size: 3rem;
+    color: black;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid grey;
+    width: 0; /* Start hidden */
+    animation: typing 5s steps(30, end) infinite, blink 1s step-end infinite alternate;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 900px; }
+  }
+  
+  @keyframes blink {
+    from { border-color: transparent; }
+    to { border-color: white; }
+  }
+  
+  /* Normal Text */
+  .welcome-text p {
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  #explore-btn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-family:'Times New Roman', Times, serif;
+    background-color: #da8c7f;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+  }
+  
+  #explore-btn:hover {
+    background-color: #ff4500;
+  }
+  
+  /* Blurred background */
+  body.blurred .wrapper {
+    filter: blur(5px);
+  }
+  
+  /* Hidden Role Container */
+  .role-container {
+    position: fixed;
+    bottom: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.5s ease-out;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    z-index: 10;
+  }
+  
+  .role-container h2 {
+    margin-bottom: 10px;
+  }
+  
+  #role-select {
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  #submit-btn {
+    padding: 10px 20px;
+    background-color: #0e7091;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 200px;
+    font-size: large;
+  }
+  
+  #submit-btn:hover {
+    background-color: #0bd8d5;
+  }
+  
+  /* Show the role container */
+  .role-container.visible {
+    bottom: 50%;
+  }
+  
+  /* Hidden initially */
+  .hidden {
+    display: none;
+  }
+  
+  /* Style for the cancel button */
+  .cancel-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px; 
+    background-color:rgb(45, 17, 17);
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+  }
