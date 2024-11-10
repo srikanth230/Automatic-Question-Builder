@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Admin | User Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .admin-list {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .admin-item {
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .admin-item h3 {
+            margin: 0;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .admin-item p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .delete-btn {
+            width:60px;
+            padding: 8px 8px;
+            background-color: #FF3B30;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #ff1e1c;
+        }
+        
+    </style>
+    <!-- Import Firebase JS SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, deleteUser } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+        import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyApNEfrUTurP8h3elk66LAMohpbJOHLoqI",
+            authDomain: "qbuild-admin.firebaseapp.com",
+            databaseURL: "https://qbuild-admin-default-rtdb.firebaseio.com",
+            projectId: "qbuild-admin",
+            storageBucket: "qbuild-admin.appspot.com",
+            messagingSenderId: "892067066927",
+            appId: "1:892067066927:web:c39cc552bcc73338c482da",
+            measurementId: "G-53WD4YV52N"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+
+        // Function to add admin user
+        window.addAdmin = function() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Create a new user with email and password
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+
+                    // Store admin user info in the database
+                    set(ref(database, 'admins/' + user.uid), {
+                        name: name,
+                        email: user.email
+                    }).then(() => {
+                        alert('Admin user added: ' + user.email);
+                        // Clear the input fields
+                        document.getElementById('name').value = '';
+                        document.getElementById('email').value = '';
+                        document.getElementById('password').value = '';
+
+                        // Refresh the admin list
+                        fetchAdminUsers();
+                    });
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    alert('Error: ' + errorMessage);
+                });
+        }
+
+        // Function to delete admin user
+        window.deleteAdmin = function(uid) {
+            const userRef = ref(database, 'admins/' + uid);
+
+            // Remove user from database
+            remove(userRef).then(() => {
+                // Get the current authenticated user
+                const user = auth.currentUser;
+
+                // Delete the user from Firebase Authentication
+                if (user) {
+                    deleteUser(user).then(() => {
+                        alert('Admin deleted successfully!');
+                        fetchAdminUsers(); // Refresh admin list
+                    }).catch((error) => {
+                        alert('Error deleting user: ' + error.message);
+                    });
+                } else {
+                    alert('Error: No current authenticated user found.');
+                }
+            }).catch((error) => {
+                alert('Error removing user from database: ' + error.message);
+            });
+        }
+
+        // Function to fetch and display admin users
+        window.fetchAdminUsers = function() {
+            const adminList = document.getElementById('adminList');
+            adminList.innerHTML = ''; // Clear the current list
+
+            const adminRef = ref(database, 'admins/');
+            onValue(adminRef, (snapshot) => {
+                snapshot.forEach((childSnapshot) => {
+                    const adminData = childSnapshot.val();
+                    const uid = childSnapshot.key;
+                    const adminItem = document.createElement('div');
+                    adminItem.className = 'admin-item';
+                    adminItem.innerHTML = `
+                        <div>
+                            <h3>Name: ${adminData.name}</h3>
+                            <p>Email: ${adminData.email}</p>
+                        </div>
+                        <button class="delete-btn" onclick="deleteAdmin('${uid}')">Delete</button>
+                    `;
+                    adminList.appendChild(adminItem);
+                });
+            });
+        }
+
+        // Fetch and display admin users on page load
+        window.onload = function() {
+            fetchAdminUsers();
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Add Admin User</h1>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter admin name">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Enter email">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter password">
+
+    <button onclick="addAdmin()">Add Admin</button>
+    
+
+        <!-- Admin users will be displayed here as cards -->
+    </div>
+    <h2>Existing Admin Users:</h2>
+    <div class="admin-list" id="adminList">
+</div>
+
+</body>
+</html>

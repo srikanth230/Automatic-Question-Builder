@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employee | User Management</title>
+    <script src="https://kit.fontawesome.com/63ba89df2f.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            
+            
+        }
+        .top-nav {
+        background-color: #2C3E50;
+        color: white;
+        padding: 10px 30px;
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-left h2 {
+        margin-left: 10px;
+        font-size: 24px;
+}
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+}
+
+    .notification-btn, .back-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        margin-right: 10px;
+}
+
+
+
+        .container {
+            max-width: 600px;
+            margin: 75px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        .popup-container {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #2C3E50;
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+}
+
+    .popup-container.show {
+        display: block;
+}
+
+    #email-id {
+        margin-bottom: 10px;
+}
+
+    .popup-menu {
+        list-style: none;
+        padding: 0;
+}
+
+    .popup-menu li {
+        margin: 10px 0;
+}
+
+    .popup-menu li a {
+        color: white;
+        text-decoration: none;
+       
+}
+
+    .popup-menu li a:hover {
+        background-color: white;
+        color: #2C3E50;
+        padding: 5px;
+        border-radius: 5px;
+}
+
+
+        .employee-list {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .employee-item {
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .employee-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .employee-item h3 {
+            margin: 0;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .employee-item p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .delete-btn {
+            width: 60px;
+            padding: 8px 8px;
+            background-color: #FF3B30;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #ff1e1c;
+        }
+        
+    </style>
+    <!-- Import Firebase JS SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword, deleteUser } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+        import { getDatabase, ref, set, onValue, remove } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+
+        // Your web app's Firebase configuration for Employee
+        const firebaseConfig = {
+            apiKey: "AIzaSyBpyWNbX5VQ05k3z9aE_4GTIhFzLMLVAEQ",
+            authDomain: "gokul-search.firebaseapp.com",
+            databaseURL: "https://gokul-search-default-rtdb.firebaseio.com",
+            projectId: "gokul-search",
+            storageBucket: "gokul-search.appspot.com",
+            messagingSenderId: "1062532158510",
+            appId: "1:1062532158510:web:78fcf98ac7dff44cd57bbf",
+            measurementId: "G-71JJT3TGSG"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+        const database = getDatabase(app);
+
+        // Function to add employee user
+        window.addEmployee = function() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Create a new user with email and password
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+
+                    // Store employee user info in the database
+                    set(ref(database, 'employees/' + user.uid), {
+                        name: name,
+                        email: user.email
+                    }).then(() => {
+                        alert('Employee user added: ' + user.email);
+                        // Clear the input fields
+                        document.getElementById('name').value = '';
+                        document.getElementById('email').value = '';
+                        document.getElementById('password').value = '';
+
+                        // Refresh the employee list
+                        fetchEmployeeUsers();
+                    });
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    alert('Error: ' + errorMessage);
+                });
+        }
+
+        // Function to delete employee user
+        window.deleteEmployee = function(uid) {
+            const userRef = ref(database, 'employees/' + uid);
+
+            // Remove user from database
+            remove(userRef).then(() => {
+                // Get the current authenticated user
+                const user = auth.currentUser;
+
+                // Delete the user from Firebase Authentication
+                if (user) {
+                    deleteUser(user).then(() => {
+                        alert('Employee deleted successfully!');
+                        fetchEmployeeUsers(); // Refresh employee list
+                    }).catch((error) => {
+                        alert('Error deleting user: ' + error.message);
+                    });
+                } else {
+                    alert('Error: No current authenticated user found.');
+                }
+            }).catch((error) => {
+                alert('Error removing user from database: ' + error.message);
+            });
+        }
+
+        // Function to fetch and display employee users
+        window.fetchEmployeeUsers = function() {
+            const employeeList = document.getElementById('employeeList');
+            employeeList.innerHTML = ''; // Clear the current list
+
+            const employeeRef = ref(database, 'employees/');
+            onValue(employeeRef, (snapshot) => {
+                snapshot.forEach((childSnapshot) => {
+                    const employeeData = childSnapshot.val();
+                    const uid = childSnapshot.key;
+                    const employeeItem = document.createElement('div');
+                    employeeItem.className = 'employee-item';
+                    employeeItem.innerHTML = `
+                        <div>
+                            <h3>Name: ${employeeData.name}</h3>
+                            <p>Email: ${employeeData.email}</p>
+                        </div>
+                        <button class="delete-btn" onclick="deleteEmployee('${uid}')">Delete</button>
+                    `;
+                    employeeList.appendChild(employeeItem);
+                });
+            });
+        }
+        const userIcon = document.getElementById('user-icon');
+         const popupContainer = document.getElementById('popup-container');
+ 
+         userIcon.addEventListener('click', () => {
+             popupContainer.classList.toggle('show');
+         });
+ 
+         window.addEventListener('click', (event) => {
+             if (!popupContainer.contains(event.target) && event.target !== userIcon) {
+                 popupContainer.classList.remove('show');
+             }
+         })
+
+        // Fetch and display employee users on page load
+        window.onload = function() {
+            fetchEmployeeUsers();
+        }
+    </script>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+           <button class="back-btn" onclick="history.back()">⬅️
+            
+        </div>
+        <div class="nav-right">
+            <button class="notification-btn">🔔</button>
+            <i class="fa-solid fa-user" id="user-icon" style="font-size: 20px; margin-left: 20px; cursor: pointer;"></i>
+        </div>
+    </nav>
+    <div class="popup-container" id="popup-container">
+        <p id="email-id">duplicate@gmail.com</p>
+        <ul class="popup-menu">
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+
+<div class="container">
+    <h1>Add Employee User</h1>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" placeholder="Enter employee name">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Enter email">
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Enter password">
+
+    <button onclick="addEmployee()">Add Employee</button>
+    
+    <!-- Employee users will be displayed here as cards -->
+    </div>
+    <h2>Existing Employee Users:</h2>
+    <div class="employee-list" id="employeeList">
+</div>
+
+</body>
+</html>

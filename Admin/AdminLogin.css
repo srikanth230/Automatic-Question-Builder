@@ -1,0 +1,102 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: url('../Images/bg.jpg')no-repeat center center;
+    background-size: cover;
+}
+
+#Logo{
+    width: 400px;
+    position: absolute;
+    top: 15%;
+    left: 42%;
+    transform: translate(-15%, -42%);
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    display: flex;
+    width: 800px;
+    height: 400px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.left-section {
+    flex: 1;
+    padding: 30px;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left-section h2 {
+    margin-bottom: 10px;
+}
+
+.left-section input[type="text"], 
+.left-section input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remember-forgot a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+
+
+.right-section {
+    flex: 1;
+    background: url('../Images/poo.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.right-section h1 {
+margin-bottom: 100px;
+
+}
+
+

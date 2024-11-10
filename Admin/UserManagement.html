@@ -1,0 +1,214 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Role | User Management</title>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/63ba89df2f.js" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/63ba89df2f.js" crossorigin="anonymous"></script>
+    <style>
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            
+            animation: fadeIn 2s ease-in-out;
+    }
+    .top-nav {
+        background-color: #2C3E50;
+        color: white;
+        padding: 10px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+
+    .nav-left h2 {
+        margin-left: 10px;
+        font-size: 24px;
+}
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+}
+
+    .notification-btn, .back-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        margin-right: 10px;
+}
+
+
+    h1 {
+        margin-bottom: 50px;
+        color: #333;
+        animation: slideIn 1.5s ease-in-out;
+}
+
+    .role-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        animation: fadeIn 2s ease-in-out;
+}
+
+    .role-card {
+        background: linear-gradient(135deg, #6b73ff 0%, #000dff 100%);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+           
+            
+        width: 180px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        animation: zoomIn 1s ease-in-out;
+    }
+
+    .role-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .role-button {
+        padding: 15px 30px;
+        font-size: 18px;
+        background-color: #fff;
+        color: #4CAF50;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .role-button:hover {
+        background-color: #e0e0e0;
+        transform: scale(1.05);
+    }
+
+    .role-button i {
+        font-size: 20px;
+    }
+    .popup-container {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #2C3E50;
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+}
+
+    .popup-container.show {
+        display: block;
+}
+
+    #email-id {
+        margin-bottom: 10px;
+}
+
+    .popup-menu {
+        list-style: none;
+        padding: 0;
+}
+
+    .popup-menu li {
+        margin: 10px 0;
+}
+
+    .popup-menu li a {
+        color: white;
+        text-decoration: none;
+       
+}
+
+    .popup-menu li a:hover {
+        background-color: white;
+        color: #2C3E50;
+        padding: 5px;
+        border-radius: 5px;
+}
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+}
+
+    @keyframes slideIn {
+        from { transform: translateY(-50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+}
+
+    @keyframes zoomIn {
+        from { transform: scale(0.5); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-left">
+           <button class="back-btn" onclick="history.back()">⬅️
+            
+        </div>
+        <div class="nav-right">
+            <button class="notification-btn">🔔</button>
+            <i class="fa-solid fa-user" id="user-icon" style="font-size: 20px; margin-left: 20px; cursor: pointer;"></i>
+        </div>
+    </nav>
+    <div class="popup-container" id="popup-container">
+        <p id="email-id">duplicate@gmail.com</p>
+        <ul class="popup-menu">
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+    <h1>User Management</h1>
+    <div class="role-container" >
+        <div class="role-card" style="padding-left: 20px;">
+            <button class="role-button" onclick="location.href='add-admin.html'">
+                <i class="fas fa-user-tie" ></i> Admin
+            </button>
+        </div>
+        <div class="role-card">
+            <button class="role-button" onclick="location.href='add-trainer.html'">
+                <i class="fas fa-chalkboard-teacher"></i> Trainer
+            </button>
+        </div>
+        <div class="role-card">
+            <button class="role-button" onclick="location.href='add-employee.html'">
+                
+                <i class="fa-solid fa-users"></i>Employee
+            </button>
+        </div>
+    </div>
+</body>
+<script>
+     const userIcon = document.getElementById('user-icon');
+         const popupContainer = document.getElementById('popup-container');
+ 
+         userIcon.addEventListener('click', () => {
+             popupContainer.classList.toggle('show');
+         });
+ 
+         window.addEventListener('click', (event) => {
+             if (!popupContainer.contains(event.target) && event.target !== userIcon) {
+                 popupContainer.classList.remove('show');
+             }
+         })
+</script>
+</html>
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP Generator with Email Verification</title>
+    <link rel="stylesheet" href="AdminOTP.css" />
+    <script defer src="AdminOTP.js"></script>
+    <script 
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  </head>
+  <body>
+    
+    <div class="container step2">
+      <h2>OTP Verification</h2>
+      <br />
+      <h4>Enter one-time password</h4>
+      <p>A one-time password has been sent to <span id="verifyEmail"></span></p>
+
+      <div class="otp-form">
+        <p>Enter the 4 digit code we sent you via email to continue</p>
+        <div class="otp-group">
+          <input type="number" class="otp-input" maxlength="1" />
+          <input type="number" class="otp-input" maxlength="1" />
+          <input type="number" class="otp-input" maxlength="1" />
+          <input type="number" class="otp-input" maxlength="1" />
+        </div>
+        <p>
+          Didn't receive the code? 
+          <a href="javascript:void(0)" onclick="resendOTP()">Resend</a>
+        </p>
+      </div>
+      <button class="verifyButton">Verify &rAarr;</button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBUILD | Admin</title>
+    <link rel="icon" href="../Images/qn.png" type="image/png">
+    <link rel="stylesheet" href="IssueResolution.css">
+    <script src="https://kit.fontawesome.com/63ba89df2f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-left">
+           <button class="back-btn" onclick="history.back()">⬅️
+            
+        </div>
+        <div class="nav-right">
+            <button class="notification-btn">🔔</button>
+            <i class="fa-solid fa-user" id="user-icon" style="font-size: 20px; margin-left: 20px; cursor: pointer;"></i>
+        </div>
+    </nav>
+    <div class="popup-container" id="popup-container">
+        <p id="email-id">trainer@example.com</p>
+        <ul class="popup-menu">
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+
+<div class="container">
+    <h1>Issue Resolution</h1>
+
+    <!-- Issue List Section -->
+    <div class="issue-list-section">
+        <h2>Reported Issues</h2>
+        <ul id="issueList">
+            <li class="issue-item">Issue #101: Server downtime</li>
+            <li class="issue-item">Issue #102: Database connection error</li>
+            <li class="issue-item">Issue #103: Application crash on login</li>
+        </ul>
+    </div>
+
+    <!-- Issue Details Section -->
+    <div class="issue-details-section">
+        <h2>Issue Details</h2>
+        <div class="details-box">
+            <p><strong>Issue ID:</strong> #102</p>
+            <p><strong>Description:</strong> Database connection error when fetching data.</p>
+            <p><strong>Reported by:</strong> User John Doe</p>
+            <p><strong>Date Reported:</strong> 23rd Sep 2024</p>
+        </div>
+    </div>
+
+    <!-- Resolution Status Section -->
+    <div class="resolution-section">
+        <h2>Resolution Status</h2>
+        <select id="resolutionStatus">
+            <option value="open">Open</option>
+            <option value="in-progress">In Progress</option>
+            <option value="resolved">Resolved</option>
+        </select>
+        <button class="assign-btn">Assign to Support</button>
+    </div>
+
+    <!-- Comment Section -->
+    <div class="comment-section">
+        <h2>Comments</h2>
+        <textarea id="commentBox" placeholder="Add a comment..." rows="4"></textarea>
+        <button class="submit-btn">Submit Comment</button>
+    
+        <script>
+             const userIcon = document.getElementById('user-icon');
+         const popupContainer = document.getElementById('popup-container');
+ 
+         userIcon.addEventListener('click', () => {
+             popupContainer.classList.toggle('show');
+         });
+ 
+         window.addEventListener('click', (event) => {
+             if (!popupContainer.contains(event.target) && event.target !== userIcon) {
+                 popupContainer.classList.remove('show');
+             }
+         })
+        </script>
