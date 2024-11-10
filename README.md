@@ -13,7 +13,7 @@ The **Automated Question Builder** is an AI-powered web application designed to 
 
 ## Features
 
-- **Automatic Question Generation**: Generates multiple types of questions (multiple-choice, short answer, true/false) based on provided content.
+- **Automatic Question Generation**: Generates multiple questions (multiple-choice, short answer, true/false) based on provided content.
 - **Content Parsing**: Extracts key concepts, keywords, and context from text to create accurate and contextually relevant questions.
 - **Customization**: Teachers can customize the number of questions, difficulty level, and type of questions.
 - **Multi-format Export**: Generates questions in various formats like PDF, Word, or directly into an LMS.
@@ -57,7 +57,7 @@ We welcome contributions! To contribute:
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
-3. Make changes and commit them (`git commit -am 'Add feature'`).
+3. Make and commit changes (`git commit -am 'Add feature'`).
 4. Push to the branch (`git push origin feature-branch`).
 5. Open a pull request.
 
@@ -67,7 +67,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Thanks to all the contributors of the open-source libraries and frameworks used in this project.
+- Thanks to all the contributors of the open-source libraries and frameworks.
 - Special thanks to the educators and researchers who inspired this idea.
 
 
@@ -81,4 +81,4 @@ The **Automated Question Builder** is the project developed by the **Captain's C
 2. [G K Hariharan - LinkedIn](https://www.linkedin.com/in/gk-hariharan-875604239/) --- hariharanpk725@gmail.com
 3. [N Afzal Hameeth - LinkedIn](https://www.linkedin.com/in/afsal-hameeth-01a099281/) --- afsalhameeth271103@gmail.com
 4. [T Nandha Gopal - LinkedIn](https://www.linkedin.com/in/nandhagopal-t-97729b257/) --- nandhathanikai@gmail.com
-5. [Sharan Parthasarathy - LinkedIn](https://www.linkedin.com/in/sharan-parthasarathy-27928124b/) --- [Email not provided]
+5. [Sharan Parthasarathy - LinkedIn](https://www.linkedin.com/in/sharan-parthasarathy-27928124b/) --- sharanparthasarathy369@gmail.com
