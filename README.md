@@ -73,6 +73,15 @@ We welcome contributions! To contribute:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Contact Us
+
+1. [V Srikanth - LinkedIn](https://www.linkedin.com/in/srikanthv3047/) --- srikanth047v@gmail.com
+2. [G K Hariharan - LinkedIn](https://www.linkedin.com/in/gk-hariharan-875604239/) --- hariharanpk725@gmail.com
+3. [N Afzal Hameeth - LinkedIn](https://www.linkedin.com/in/afsal-hameeth-01a099281/) --- afsalhameeth271103@gmail.com
+4. [T Nandha Gopal - LinkedIn](https://www.linkedin.com/in/nandhagopal-t-97729b257/) --- nandhathanikai@gmail.com
+5. [Sharan Parthasarathy - LinkedIn](https://www.linkedin.com/in/sharan-parthasarathy-27928124b/) --- [Email not provided]
+
+
 ## Acknowledgments
 
 - Thanks to all the contributors of the open-source libraries and frameworks used in this project.
