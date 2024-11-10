@@ -1,0 +1,146 @@
+
+
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #d4d7db;
+    margin: 0;
+   
+}
+
+.top-nav {
+    background-color: #2C3E50;
+    color: white;
+    padding: 5px 20px; /* Reduced height */
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left h2 {
+    margin-left: 600px;
+    font-size: 28px; 
+    margin-bottom: 50px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.notification-btn  {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.back-btn{
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    padding-top: 100px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    padding-left: 450px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+select, input[type="file"], textarea {
+    width: 65%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+textarea {
+    resize: none; 
+    height: 200px; 
+}
+
+.upload-status {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    color: red;
+    text-align: center;
+}
+
+.error-message {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    width: 20%;
+    padding: 8px; 
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px; 
+    cursor: pointer;
+}
+
+.button {
+    padding-left: 600px;
+}
+
+.submit-btn:hover {
+    background-color: #45a049;
+}
+
+.popup-container {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #2C3E50;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.popup-container.show {
+    display: block;
+}
+
+#email-id {
+    margin-bottom: 10px;
+}
+
+.popup-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.popup-menu li {
+    margin: 10px 0;
+}
+
+.popup-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.popup-menu li a:hover {
+    background-color: white;
+    color: #2C3E50;
+    padding: 5px;
+    border-radius: 5px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBUILD | Login Page</title>
+    <link rel="icon" href="../Images/qn.png" type="image/png">
+    <link rel="stylesheet" href="TrainerLogin.css">
+   
+</head>
+<body>
+    <img id="Logo" src="../Images/qbuildbg.png" alt="qbuild">
+    <div class="container">
+        <div class="login-box">
+            <div class="left-section">
+                <h2>Email</h2>
+                <input type="text" id="email" placeholder="username or email" required>
+                <h2>Password</h2>
+                <input type="password" id="password" placeholder="password" required>
+                <div class="remember-forgot">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <!-- Removed the <a> tag to ensure proper form handling -->
+                <button id="submit" class="btn">LOGIN</button>
+                <script type="module" src="TrainerLogin.js"></script> <!-- Link to your JS file -->
+            </div>
+            <div class="right-section">
+                <!-- You can add content here if needed -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

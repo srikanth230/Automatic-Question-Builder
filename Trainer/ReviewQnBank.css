@@ -1,0 +1,180 @@
+body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #d4d7db;
+
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    
+    color: white;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.top-nav {
+    background-color: #2C3E50;
+    color: white;
+    padding: 5px 20px; 
+    display: flex;
+    height: 50px;
+    width: 97%;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.nav-left h2 {
+    margin-left: 600px;
+    font-size: 28px; 
+    margin-bottom: 50px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.notification-btn  {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.back-btn{
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    
+}
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    animation: slideIn 1s ease-in-out;
+}
+
+h1 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    animation: zoomIn 1.5s ease-in-out;
+}
+
+.question-list {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.question-item {
+    margin: 10px 0;
+    padding: 10px;
+    background:rgb(65, 93, 129);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.choices {
+    margin: 10px 0;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+.edit-btn, .delete-btn, .add-btn, .save-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #4CAF50; 
+    color: white;
+}
+
+.delete-btn {
+    background-color: #f44336; 
+    color: white;
+}
+
+.add-btn {
+    background-color: #2196F3; 
+    color: white;
+    margin: 10px 0;
+}
+
+.save-btn {
+    background-color: #673AB7; 
+    color: white;
+    margin-top: 20px;
+}
+
+.edit-btn:hover, .delete-btn:hover, .add-btn:hover, .save-btn:hover {
+    opacity: 0.8;
+}
+/* Popup Container Styles */
+.popup-container {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #2C3E50;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.popup-container.show {
+    display: block;
+}
+
+#email-id {
+    margin-bottom: 10px;
+}
+
+.popup-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.popup-menu li {
+    margin: 10px 0;
+}
+
+.popup-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.popup-menu li a:hover {
+    background-color: white;
+    color: #2C3E50;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

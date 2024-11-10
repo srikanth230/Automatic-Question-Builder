@@ -1,0 +1,154 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QBUILD | Upload Curriculum</title>
+    <link rel="icon" href="../Images/qn.png" type="image/png">
+    <link rel="stylesheet" href="UploadCurriculum.css">
+    <script src="https://kit.fontawesome.com/63ba89df2f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-left">
+            <button class="back-btn" onclick="history.back()">⬅️
+            <h2 style="padding-top: 20px; color: black;">Upload Curriculum</h2>
+        </div>
+        <div class="nav-right">
+            <button class="notification-btn">🔔</button>
+            <i class="fa-solid fa-user" id="user-icon" style="font-size: 20px; margin-left: 20px; cursor: pointer;"></i>
+        </div>
+    </nav>
+
+    <div class="popup-container" id="popup-container">
+        <p id="email-id">trainer@example.com</p>
+        <ul class="popup-menu">
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+
+    <div class="form-group">
+        <label for="topic" style="padding-top: 50px;">Select Topic</label>
+        <select id="topic">
+            <option value="">-- Select Topic --</option>
+            <option value="AI">Artificial Intelligence</option>
+            <option value="DS">Data Science</option>
+            <option value="ML">Machine Learning</option>
+            <option value="WebDev">Web Development</option>
+            <option value="Eng gram">English Grammar</option>
+            <option value="Py">Python</option>
+            <option value="Jv">Java</option>
+            <option value="C">C</option>
+            <option value="C#">C#</option>
+            <option value="C++">C++</option>
+            <option value="CN">Computer Networks</option>
+            <option value="DL">Deep Learning</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Enter Description </label>
+        <textarea id="description" rows="4" placeholder="Enter your description here..."></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="curriculumFile">Upload Curriculum (CSV, Excel, PDF )</label>
+        <input type="file" id="curriculumFile" accept=".csv, .xls, .xlsx">
+    </div>
+
+    <div class="upload-status">
+        <p id="statusMessage">No file uploaded yet.</p>
+    </div>
+
+    <div class="error-message" id="error-message"></div> <!-- Error message div -->
+
+    <a class="button"><button class="submit-btn" id="submitBtn">Submit</button></a>
+
+    <script>
+        const fileInput = document.getElementById('curriculumFile');
+        const statusMessage = document.getElementById('statusMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        const topicSelect = document.getElementById('topic');
+        const descriptionTextarea = document.getElementById('description');
+        const errorMessageDiv = document.getElementById('error-message');
+    
+        fileInput.addEventListener('change', function() {
+            if (fileInput.files.length > 0) {
+                statusMessage.textContent = 'File ready to upload: ' + fileInput.files[0].name;
+                statusMessage.style.color = 'green';
+            } else {
+                statusMessage.textContent = 'No file uploaded yet.';
+                statusMessage.style.color = 'red';
+            }
+        });
+
+        
+
+function saveData() {
+    const technology = document.getElementById('technology').value; // Assume there's a dropdown
+    const topic = document.getElementById('topic').value; // Assume there's another dropdown
+    const uploadedFile = document.getElementById('fileUpload').files[0] ? document.getElementById('fileUpload').files[0].name : '';
+    const enteredParagraph = document.getElementById('paragraphInput').value; // Assume there's a textarea
+
+    // Storing the data in localStorage
+    localStorage.setItem('technology', technology);
+    localStorage.setItem('topic', topic);
+    localStorage.setItem('uploadedFile', uploadedFile);
+    localStorage.setItem('enteredParagraph', enteredParagraph);
+
+    
+}
+
+
+    
+        submitBtn.addEventListener('click', function(event) {
+            // Prevent default form submission behavior
+            event.preventDefault();
+    
+            // Reset the error message
+            errorMessageDiv.textContent = '';
+    
+            // Check if at least one field is filled
+            if (topicSelect.value === "" && descriptionTextarea.value.trim() === "" && fileInput.files.length === 0) {
+                errorMessageDiv.textContent = 'Please fill any one of the fields.';
+                errorMessageDiv.style.color = 'red';
+                return; // Stop the form submission
+            }
+    
+           
+            window.location.href = "GenQnbank.html"; 
+        });
+    
+        // Function to clear error message when user interacts with fields
+        function clearErrorMessage() {
+            errorMessageDiv.textContent = '';
+        }
+    
+        topicSelect.addEventListener('focus', clearErrorMessage);
+        descriptionTextarea.addEventListener('focus', clearErrorMessage);
+        fileInput.addEventListener('change', clearErrorMessage); // Also clear error when file is selected
+    
+        // Popup functionality
+        const userIcon = document.getElementById('user-icon');
+        const popupContainer = document.getElementById('popup-container');
+    
+        userIcon.addEventListener('click', () => {
+            popupContainer.classList.toggle('show');
+        });
+    
+        window.addEventListener('click', (event) => {
+            if (!popupContainer.contains(event.target) && event.target !== userIcon) {
+                popupContainer.classList.remove('show');
+            }
+        });
+    </script>
+    
+
+</body>
+</html>
+

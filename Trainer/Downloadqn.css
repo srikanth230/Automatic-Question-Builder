@@ -1,0 +1,218 @@
+
+
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #d4d7db;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    
+    
+    animation: fadeIn 2s ease-in-out;
+}
+
+.top-nav {
+    background-color: #2C3E50;
+    color: white;
+    padding: 5px 20px; 
+    display: flex;
+    height: 50px;
+    width: 97%;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.nav-left h2 {
+    margin-left: 600px;
+    font-size: 28px; 
+    margin-bottom: 50px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.notification-btn  {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.back-btn{
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    
+}
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background:#f9f9f9; 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1s ease-in-out;
+}
+
+h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 30px;
+    animation: zoomIn 1.5s ease-in-out;
+}
+
+.question-bank-list {
+    margin-bottom: 20px;
+}
+
+.question-bank-item {
+    background-color: rgb(65, 93, 129);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: #fff;
+    animation: fadeInUp 1.5s ease-in-out;
+}
+
+.question-bank-item.finished {
+    opacity: 0.5; 
+    position: relative;
+}
+
+.question-bank-item.selected {
+    opacity: 0.9; 
+    position: relative;
+}
+
+.preview-btn {
+    background: transparent;
+    border: none;
+    color: #4CAF50;
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #130e0e;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #130a0a;
+}
+
+.download-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.download-btn:hover {
+    background-color: #45a049;
+}
+
+.download-btn.downloading::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    animation: downloading 2s linear infinite;
+}
+
+
+.popup-container {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #2C3E50;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.popup-container.show {
+    display: block;
+}
+
+#email-id {
+    margin-bottom: 10px;
+}
+
+.popup-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.popup-menu li {
+    margin: 10px 0;
+}
+
+.popup-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+.popup-menu li a:hover {
+    background-color: white;
+    color: #2C3E50;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+@keyframes downloading {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
